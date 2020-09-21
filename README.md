@@ -5,3 +5,4 @@ GetService is a service, which gives opportunity to quickly find specialist to d
 
 Roles:
 Shynkaryuk Andriy - Tester
+Pityk Serhiy - Backend developer
