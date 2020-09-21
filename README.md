@@ -4,5 +4,5 @@ GetService is a service, which gives opportunity to quickly find specialist to d
 2. Specialist can view board of works which applies to his categories
 
 Roles:
-Shynkaryuk Andriy - Tester
+Shynkaryuk Andriy, Panchenko-Vahner Borys - Tester
 Pityk Serhiy, Ptitsyn Vadym - Backend developer
