@@ -1,4 +1,4 @@
-package com.shukary.GetService.controllerrs;
+package com.shtukary.GetService.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/")
 @CrossOrigin
 public class HomeController {
 
