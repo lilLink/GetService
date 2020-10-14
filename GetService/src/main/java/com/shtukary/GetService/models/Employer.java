@@ -1,4 +1,4 @@
-package com.shukary.GetService.models;
+package com.shtukary.GetService.models;
 
 import javax.persistence.*;
 import java.util.List;
