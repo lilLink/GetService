@@ -1,6 +1,7 @@
 package com.shtukary.GetService.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,12 +19,25 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "role_id", nullable = false)
+    private List<Role> roles;
+
     public User() {
     }
 
-    public User(String email, String password) {
+    public User(String email, String password, List<Role> roles) {
         this.email = email;
         this.password = password;
+        this.roles = roles;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public Long getUserId() {
@@ -57,12 +71,13 @@ public class User {
         User user = (User) o;
         return Objects.equals(userId, user.userId) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password);
+                Objects.equals(password, user.password) &&
+                Objects.equals(roles, user.roles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, email, password);
+        return Objects.hash(userId, email, password, roles);
     }
 
     @Override
@@ -71,6 +86,7 @@ public class User {
                 "userId=" + userId +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }
