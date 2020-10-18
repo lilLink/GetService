@@ -1,4 +1,4 @@
-package com.shukary.GetService.models;
+package com.shtukary.GetService.models;
 
 import com.sun.istack.NotNull;
 
