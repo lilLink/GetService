@@ -25,7 +25,20 @@ public class UserInfo {
     @NotNull
     private User user;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id", nullable = false)
+    @NotNull
+    private Role role;
+
     public UserInfo() {
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Long getUserId() {
@@ -68,7 +81,8 @@ public class UserInfo {
         return Objects.equals(userId, userInfo.userId) &&
                 Objects.equals(firstName, userInfo.firstName) &&
                 Objects.equals(lastName, userInfo.lastName) &&
-                Objects.equals(user, userInfo.user);
+                Objects.equals(user, userInfo.user) &&
+                Objects.equals(role, userInfo.role);
     }
 
     @Override
@@ -83,6 +97,7 @@ public class UserInfo {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", user=" + user +
+                "/ role=" + role.toString() +
                 '}';
     }
 }

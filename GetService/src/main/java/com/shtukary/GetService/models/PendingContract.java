@@ -15,20 +15,22 @@ public class PendingContract {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employer_id", nullable = false)
-    private List<Employer> employer;
+    private Employer employer;
 
+    @Column(name = "price")
     private float price;
 
+    @Column(name = "description")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "skill_id", nullable = false)
-    private List<Skill> neededSkill;
+    private Skill neededSkill;
 
     public PendingContract() {
     }
 
-    public PendingContract(List<Employer> employer, float price, String description, List<Skill> neededSkill) {
+    public PendingContract(Employer employer, float price, String description, Skill neededSkill) {
         this.employer = employer;
         this.price = price;
         this.description = description;
@@ -43,11 +45,11 @@ public class PendingContract {
         this.contractId = contractId;
     }
 
-    public List<Employer> getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(List<Employer> employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
@@ -67,11 +69,11 @@ public class PendingContract {
         this.description = description;
     }
 
-    public List<Skill> getNeededSkill() {
+    public Skill getNeededSkill() {
         return neededSkill;
     }
 
-    public void setNeededSkill(List<Skill> neededSkill) {
+    public void setNeededSkill(Skill neededSkill) {
         this.neededSkill = neededSkill;
     }
 

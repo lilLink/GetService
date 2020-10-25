@@ -1,6 +1,7 @@
 package com.shtukary.GetService.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +15,8 @@ public class Skill {
 
     private String skillName;
 
-    @OneToMany(mappedBy = "skill", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "skill_id", nullable = false)
     private Category category;
 
     public Skill() {

@@ -19,25 +19,36 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "role_id", nullable = false)
-    private List<Role> roles;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employer_id", referencedColumnName = "employer_id")
+    private Employer employer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contractor_id", referencedColumnName = "contractor_id")
+    private Contractor contractor;
+
+    public Employer getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
+    }
+
+    public Contractor getContractor() {
+        return contractor;
+    }
+
+    public void setContractor(Contractor contractor) {
+        this.contractor = contractor;
+    }
 
     public User() {
     }
 
-    public User(String email, String password, List<Role> roles) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.roles = roles;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 
     public Long getUserId() {
@@ -71,13 +82,12 @@ public class User {
         User user = (User) o;
         return Objects.equals(userId, user.userId) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(roles, user.roles);
+                Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, email, password, roles);
+        return Objects.hash(userId, email, password);
     }
 
     @Override
@@ -86,7 +96,6 @@ public class User {
                 "userId=" + userId +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", roles=" + roles +
                 '}';
     }
 }

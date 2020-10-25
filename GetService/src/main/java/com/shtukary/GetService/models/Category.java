@@ -14,16 +14,15 @@ public class Category {
 
     private String categoryName;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "skill_id", nullable = false)
-    private List<Skill> skills;
+    @OneToMany(mappedBy = "skill", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Skill> skill;
 
     public Category() {
     }
 
     public Category(String categoryName, List<Skill> skills) {
         this.categoryName = categoryName;
-        this.skills = skills;
+        this.skill = skills;
     }
 
     public Long getCategoryId() {
@@ -43,11 +42,11 @@ public class Category {
     }
 
     public List<Skill> getSkills() {
-        return skills;
+        return skill;
     }
 
     public void setSkills(List<Skill> skills) {
-        this.skills = skills;
+        this.skill = skills;
     }
 
     @Override
@@ -57,12 +56,12 @@ public class Category {
         Category category = (Category) o;
         return Objects.equals(categoryId, category.categoryId) &&
                 Objects.equals(categoryName, category.categoryName) &&
-                Objects.equals(skills, category.skills);
+                Objects.equals(skill, category.skill);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(categoryId, categoryName, skills);
+        return Objects.hash(categoryId, categoryName, skill);
     }
 
     @Override
@@ -70,7 +69,7 @@ public class Category {
         return "Category{" +
                 "categoryId=" + categoryId +
                 ", categoryName='" + categoryName + '\'' +
-                ", skills=" + skills +
+                ", skills=" + skill +
                 '}';
     }
 }

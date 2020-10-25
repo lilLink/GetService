@@ -17,27 +17,22 @@ public class Contractor {
     @JoinColumn(name = "contractor_id", referencedColumnName = "user_id", nullable = false)
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            mappedBy = "contractors")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<CurrentContract> currentContracts;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "contractor_id", nullable = false)
-    private List<FinishedContract> finishedContracts;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<FinishedContract> finishedContract;
 
-    @ManyToMany(fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            mappedBy = "contractors")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Skill> skills;
 
     public Contractor() {
     }
 
-    public Contractor(User user, List<CurrentContract> currentContracts, List<FinishedContract> finishedContracts, List<Skill> skills) {
+    public Contractor(User user, List<CurrentContract> currentContracts, List<FinishedContract> finishedContract, List<Skill> skills) {
         this.user = user;
         this.currentContracts = currentContracts;
-        this.finishedContracts = finishedContracts;
+        this.finishedContract = finishedContract;
         this.skills = skills;
     }
 
@@ -66,11 +61,11 @@ public class Contractor {
     }
 
     public List<FinishedContract> getFinishedContracts() {
-        return finishedContracts;
+        return finishedContract;
     }
 
-    public void setFinishedContracts(List<FinishedContract> finishedContracts) {
-        this.finishedContracts = finishedContracts;
+    public void setFinishedContracts(List<FinishedContract> finishedContract) {
+        this.finishedContract = finishedContract;
     }
 
     public List<Skill> getSkills() {
@@ -89,13 +84,13 @@ public class Contractor {
         return Objects.equals(contractorId, that.contractorId) &&
                 Objects.equals(user, that.user) &&
                 Objects.equals(currentContracts, that.currentContracts) &&
-                Objects.equals(finishedContracts, that.finishedContracts) &&
+                Objects.equals(finishedContract, that.finishedContract) &&
                 Objects.equals(skills, that.skills);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contractorId, user, currentContracts, finishedContracts, skills);
+        return Objects.hash(contractorId, user, currentContracts, finishedContract, skills);
     }
 
     @Override
@@ -104,7 +99,7 @@ public class Contractor {
                 "contractorId=" + contractorId +
                 ", user=" + user +
                 ", currentContracts=" + currentContracts +
-                ", finishedContracts=" + finishedContracts +
+                ", finishedContracts=" + finishedContract +
                 ", skills=" + skills +
                 '}';
     }

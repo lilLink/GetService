@@ -11,7 +11,11 @@ public class CurrentContract {
     @Column(name = "current_id")
     private Long contractId;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "contractor_id", nullable = false)
     private Contractor contractor;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "employer_id", nullable = false)
     private Employer employer;
 }

@@ -1,6 +1,7 @@
 package com.shtukary.GetService.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,11 +17,14 @@ public class FinishedContract {
     @JoinColumn(name = "employer_id", nullable = false)
     private Employer employer;
 
-    @OneToMany(mappedBy = "finished", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "contractor_id", nullable = false)
     private Contractor contractor;
 
+    @Column(name = "mark")
     private float mark;
 
+    @Column(name = "comment")
     private String comment;
 
     public FinishedContract() {
