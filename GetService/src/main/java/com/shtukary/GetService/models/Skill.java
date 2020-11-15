@@ -1,12 +1,13 @@
 package com.shtukary.GetService.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "skill")
-public class Skill {
+public class Skill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +17,16 @@ public class Skill {
     private String skillName;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "skill_id", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "contract_id", nullable = false)
+    private Contract contract;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "contractor_id", nullable = false)
+    private Contractor contractor;
 
     public Skill() {
     }

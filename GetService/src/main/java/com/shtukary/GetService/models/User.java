@@ -1,12 +1,13 @@
 package com.shtukary.GetService.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

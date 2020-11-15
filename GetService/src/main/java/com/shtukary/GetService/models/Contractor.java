@@ -1,12 +1,13 @@
 package com.shtukary.GetService.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "contractor")
-public class Contractor {
+public class Contractor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +18,18 @@ public class Contractor {
     @JoinColumn(name = "contractor_id", referencedColumnName = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contractor",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<CurrentContract> currentContracts;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "contractor",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<FinishedContract> finishedContract;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contractor",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Skill> skills;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "started_id", nullable = false)
+    private StartedContract startedContract;
 
     public Contractor() {
     }

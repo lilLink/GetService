@@ -3,12 +3,13 @@ package com.shtukary.GetService.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "employer")
-public class Employer {
+public class Employer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +17,7 @@ public class Employer {
     private Long employerId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employer_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     @NotNull
     private User user;
 
@@ -28,6 +29,10 @@ public class Employer {
 
     @OneToMany(mappedBy = "employer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<FinishedContract> finishedContracts;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "contract_id", nullable = false)
+    private Contract contract;
 
     public Employer() {
     }

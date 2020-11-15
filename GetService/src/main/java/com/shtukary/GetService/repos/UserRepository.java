@@ -1,6 +1,9 @@
 package com.shtukary.GetService.repos;
 
+import com.shtukary.GetService.models.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends CrudRepository {
+@Repository
+public interface UserRepository extends CrudRepository<User, Long> {
 }
