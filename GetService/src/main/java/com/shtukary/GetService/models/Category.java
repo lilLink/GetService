@@ -14,6 +14,7 @@ public class Category implements Serializable {
     @Column(name = "category_id")
     private Long categoryId;
 
+    @Column(name = "category_name")
     private String categoryName;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

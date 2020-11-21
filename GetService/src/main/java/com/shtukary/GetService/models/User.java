@@ -21,15 +21,27 @@ public class User implements Serializable {
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employer_id", referencedColumnName = "employer_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "info_id")
+    UserInfo userInfo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "employer_id")
     private Employer employer;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contractor_id", referencedColumnName = "contractor_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "contractor_id")
     private Contractor contractor;
 
     public Employer getEmployer() {
         return employer;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     public void setEmployer(Employer employer) {

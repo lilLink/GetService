@@ -11,7 +11,6 @@ public class Contractor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "contractor_id")
     private Long contractorId;
 
     @OneToOne(cascade = CascadeType.ALL)

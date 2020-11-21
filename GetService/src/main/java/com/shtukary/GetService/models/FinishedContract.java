@@ -10,7 +10,6 @@ public class FinishedContract implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "finished_id")
     private Long contractId;
 
     @OneToOne(cascade = CascadeType.ALL)

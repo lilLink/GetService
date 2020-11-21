@@ -11,7 +11,6 @@ public class PendingContract implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pending_id")
     private Long contractId;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -12,7 +12,7 @@ public class UserInfo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "info_id")
     private Long userId;
 
     @Column(name = "first_name")
@@ -22,12 +22,12 @@ public class UserInfo implements Serializable {
     private String lastName;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "info_id", referencedColumnName = "user_id", nullable = false)
     @NotNull
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id", nullable = false)
+    @JoinColumn(name = "info_id", referencedColumnName = "role_id", nullable = false)
     @NotNull
     private Role role;
 

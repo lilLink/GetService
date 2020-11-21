@@ -14,6 +14,7 @@ public class Skill implements Serializable {
     @Column(name = "skill_id")
     private Long skillId;
 
+    @Column(name = "skill_name")
     private String skillName;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
