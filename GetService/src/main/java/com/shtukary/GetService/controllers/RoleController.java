@@ -1,8 +1,6 @@
 package com.shtukary.GetService.controllers;
 
-import com.shtukary.GetService.models.PendingContract;
 import com.shtukary.GetService.models.Role;
-import com.shtukary.GetService.service.PendingContractService;
 import com.shtukary.GetService.service.RoleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
