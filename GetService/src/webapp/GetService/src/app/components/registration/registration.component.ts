@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -8,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class RegistrationComponent implements OnInit {
 
   checked: boolean = true;
+  user: User = new User();
  
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   checkPass(input, repeat) {
     if(input == repeat){
@@ -23,5 +26,16 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  /*insert(): void {
+    this.resumeService.insert(this.user)
+      .subscribe(data => {
+        if (data != null) {
+          this.router.navigate(['/resume/user']);
+        } else {
+          alert("Validation problem has been occured");
+        }
+      });
+  };*/
 
 }
