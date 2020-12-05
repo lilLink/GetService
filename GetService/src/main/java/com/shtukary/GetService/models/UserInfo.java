@@ -22,11 +22,6 @@ public class UserInfo implements Serializable {
     private String lastName;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "info_id", referencedColumnName = "user_id", nullable = false)
-    @NotNull
-    private User user;
-
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "info_id", referencedColumnName = "role_id", nullable = false)
     @NotNull
     private Role role;
@@ -66,14 +61,6 @@ public class UserInfo implements Serializable {
         this.lastName = lastName;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,13 +69,12 @@ public class UserInfo implements Serializable {
         return Objects.equals(userId, userInfo.userId) &&
                 Objects.equals(firstName, userInfo.firstName) &&
                 Objects.equals(lastName, userInfo.lastName) &&
-                Objects.equals(user, userInfo.user) &&
                 Objects.equals(role, userInfo.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, firstName, lastName, user);
+        return Objects.hash(userId, firstName, lastName);
     }
 
     @Override
@@ -97,7 +83,6 @@ public class UserInfo implements Serializable {
                 "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", user=" + user +
                 "/ role=" + role.toString() +
                 '}';
     }
