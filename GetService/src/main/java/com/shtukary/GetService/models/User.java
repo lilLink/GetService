@@ -1,8 +1,9 @@
 package com.shtukary.GetService.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -31,6 +32,11 @@ public class User implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "contractor_id")
     private Contractor contractor;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "role_id", nullable = false)
+    @NotNull
+    private Role role;
 
     public Employer getEmployer() {
         return employer;
