@@ -21,20 +21,7 @@ public class UserInfo implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "info_id", referencedColumnName = "role_id", nullable = false)
-    @NotNull
-    private Role role;
-
     public UserInfo() {
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public Long getUserId() {
@@ -68,8 +55,7 @@ public class UserInfo implements Serializable {
         UserInfo userInfo = (UserInfo) o;
         return Objects.equals(userId, userInfo.userId) &&
                 Objects.equals(firstName, userInfo.firstName) &&
-                Objects.equals(lastName, userInfo.lastName) &&
-                Objects.equals(role, userInfo.role);
+                Objects.equals(lastName, userInfo.lastName);
     }
 
     @Override
@@ -83,7 +69,6 @@ public class UserInfo implements Serializable {
                 "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                "/ role=" + role.toString() +
                 '}';
     }
 }
