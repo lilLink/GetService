@@ -26,7 +26,7 @@ export class ContractService {
     return this.http.get<Contract[]>(this.contractURL, httpOptions);
   }
 
-  public findById(contractId: number): Observable<Contract> {
+  public findById(contractId: any): Observable<Contract> {
     return this.http.get<Contract>(this.contractURL + contractId, httpOptions);
   }
 
