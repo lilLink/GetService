@@ -27,7 +27,7 @@
                   <div class="col-md-10 col-sm-9 col-xs-12">
                     <input type="text" class="form-control" pattern="^[A-Za-z? ?A-Za-z]{3,255}$"
                       [(ngModel)]="contract.description" placeholder="Description" id="description" name="description"
-                      #position="ngModel" required autocomplete="off">
+                      #description="ngModel" required autocomplete="off">
                     <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
                       <div [hidden]="!description.errors.required">Description is required!</div>
                       <div [hidden]="!description.errors.pattern">Description can only contain letters of the alphabet
@@ -40,7 +40,7 @@
                   <div class="col-md-10 col-sm-9 col-xs-12">
                     <input type="text" class="form-control" pattern="^[1-9][0-9][0-9][0-9]$"
                       [(ngModel)]="contract.price" placeholder="Price" id="price" name="description"
-                      #position="ngModel" required autocomplete="off">
+                      #price="ngModel" required autocomplete="off">
                     <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
                       <div [hidden]="!price.errors.required">Price is required!</div>
                       <div [hidden]="!price.errors.pattern">Price can only contain numbers.</div>
@@ -51,15 +51,15 @@
               <fieldset class="fieldset">
                 <fieldset class="experience-border">
                   <legend class="experience-border">Skill Info</legend>
-                  <div *ngFor="let skill of contract.skills; let index = index;">
+                  <div *ngFor="let skill of contract.neededSkills; let index = index;">
                     <label for="description" class="col-md-2 col-sm-3 col-xs-12 control-label">Skill:{{index+1}}</label>
                     <div class="form-group">
                       <label for="name" class="col-md-2 col-sm-3 col-xs-12 control-label">Title</label>
                       <div class="col-md-10 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" pattern="^[A-Za-z]{3,30}$" [(ngModel)]="skill.name"
                           [ngModelOptions]="{standalone: true}" placeholder="Title" id="name" name="name"
-                          #title="ngModel" required autocomplete="off">
-                        <div *ngIf="name.errors && (title.dirty || title.touched)" class="alert alert-danger">
+                          #name="ngModel" required autocomplete="off">
+                        <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
                           <div [hidden]="!name.errors.required">Title is required!</div>
                           <div [hidden]="!name.errors.pattern">Title can only contain letters of the alphabet (from
                             3 to 30 characters).</div>
@@ -67,11 +67,11 @@
                       </div>
                     </div>
 
-                    <div *ngIf="contract.contractId == null">
+                    <div *ngIf="contract.id == null">
                       <p style="margin-top: 10px;"><a class="btn btn-danger" style="left: 0;" role="button"
                           (click)="removeInputFieldSkill(index)">Delete Skill</a></p>
                     </div>
-                    <div *ngIf="contract.contractId != null">
+                    <div *ngIf="contract.id != null">
                       <p style="margin-top: 10px;"><a class="btn btn-danger" style="left: 0;" role="button"
                           (click)="deleteSkill(skill)">Delete Skill</a></p>
                     </div>
@@ -83,10 +83,10 @@
               <fieldset class="fieldset">
                 <h3 class="fieldset-title">Action</h3>
                 <div class="form-group">
-                  <div *ngIf="contract.contractId == null">
+                  <div *ngIf="contract.id == null">
                     <button [disabled]="!cvForm.form.valid" class="btn btn-primary" (click)="insert()">Create</button>
                   </div>
-                  <div *ngIf="contract.contractId != null">
+                  <div *ngIf="contract.id != null">
                     <button [disabled]="!cvForm.form.valid" class="btn btn-success" (click)="update()">Update</button>
                   </div>
                   <hr>

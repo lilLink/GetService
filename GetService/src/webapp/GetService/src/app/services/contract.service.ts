@@ -23,7 +23,7 @@ export class ContractService {
   private contractURL = 'http://localhost:8080/contract/';
 
   public findAll(){
-    return this.http.get<Contract[]>(this.contractURL, httpOptions);
+    return this.http.get<Contract[]>(this.contractURL + "view", httpOptions);
   }
 
   public findById(contractId: any): Observable<Contract> {
@@ -39,7 +39,7 @@ export class ContractService {
   }
 
   public create(contract: Contract) {
-    return this.http.post<Contract>(this.contractURL , contract, httpOptions);
+    return this.http.post<Contract>(this.contractURL + "add" , contract, httpOptions);
   }
 
 }

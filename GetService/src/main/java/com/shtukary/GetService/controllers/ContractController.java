@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("contract")
+@RequestMapping("/contract")
 @CrossOrigin
 public class ContractController {
 
     @Autowired
     private ContractService contractService;
 
-    @GetMapping
+    @GetMapping(path = "/view")
     public List<Contract> getAll(){
         return contractService.findAll();
     }
@@ -34,7 +34,7 @@ public class ContractController {
         return contract;
     }
 
-    @PostMapping
+    @PostMapping(path = "/add")
     public Contract create(@RequestBody Contract contract){
         return contractService.create(contract);
     }

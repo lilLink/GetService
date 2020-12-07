@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,14 +19,16 @@ import { ContractsComponent } from './components/contracts/contracts.component';
     AuthorizationComponent,
     RegistrationComponent,
     HeaderlogComponent,
-    ContractsComponent
+    ContractsComponent,
     HeaderComponent,
     AddContractComponent,
     ViewContractComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

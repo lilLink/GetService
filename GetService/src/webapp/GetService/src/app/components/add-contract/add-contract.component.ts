@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Contract } from 'src/app/models/contract';
 import { Skill } from 'src/app/models/skill';
 import { ContractService } from 'src/app/services/contract.service';
@@ -21,7 +22,7 @@ export class AddContractComponent implements OnInit {
               private skillService: SkillService) { }
 
   ngOnInit(): void {
-    var cvId = this.route.snapshot.paramMap.get("Id");
+    var cvId = this.route.snapshot.paramMap.get("id");
     if (cvId !== null) {
       this.contractService.findById(cvId)
         .subscribe(data => {
