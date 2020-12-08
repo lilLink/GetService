@@ -23,8 +23,6 @@ public class Contractor implements Serializable {
     @OneToMany(mappedBy = "contractor",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<FinishedContract> finishedContract;
 
-    @OneToMany(mappedBy = "contractor",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Skill> skills;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "started_id", nullable = false)
@@ -33,11 +31,10 @@ public class Contractor implements Serializable {
     public Contractor() {
     }
 
-    public Contractor(User user, List<CurrentContract> currentContracts, List<FinishedContract> finishedContract, List<Skill> skills) {
+    public Contractor(User user, List<CurrentContract> currentContracts, List<FinishedContract> finishedContract) {
         this.user = user;
         this.currentContracts = currentContracts;
         this.finishedContract = finishedContract;
-        this.skills = skills;
     }
 
     public Long getContractorId() {
@@ -72,13 +69,7 @@ public class Contractor implements Serializable {
         this.finishedContract = finishedContract;
     }
 
-    public List<Skill> getSkills() {
-        return skills;
-    }
 
-    public void setSkills(List<Skill> skills) {
-        this.skills = skills;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -88,13 +79,12 @@ public class Contractor implements Serializable {
         return Objects.equals(contractorId, that.contractorId) &&
                 Objects.equals(user, that.user) &&
                 Objects.equals(currentContracts, that.currentContracts) &&
-                Objects.equals(finishedContract, that.finishedContract) &&
-                Objects.equals(skills, that.skills);
+                Objects.equals(finishedContract, that.finishedContract);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contractorId, user, currentContracts, finishedContract, skills);
+        return Objects.hash(contractorId, user, currentContracts, finishedContract);
     }
 
     @Override
@@ -104,7 +94,6 @@ public class Contractor implements Serializable {
                 ", user=" + user +
                 ", currentContracts=" + currentContracts +
                 ", finishedContracts=" + finishedContract +
-                ", skills=" + skills +
                 '}';
     }
 }

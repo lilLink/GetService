@@ -1,6 +1,6 @@
 import { CurrentContract } from './current-contract';
 import { FinishedContract } from './finished-contract';
-import { Skill } from './skill';
+import { Skill } from './skill.model';
 import { StartedContract } from './started-contract';
 import { User } from './user';
 

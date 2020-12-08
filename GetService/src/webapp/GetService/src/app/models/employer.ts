@@ -1,4 +1,4 @@
-import { Contract } from './contract';
+import { Contract } from './contract.model';
 import { CurrentContract } from './current-contract';
 import { FinishedContract } from './finished-contract';
 import { PendingContract } from './pending-contract';

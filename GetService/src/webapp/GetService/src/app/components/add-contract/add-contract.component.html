@@ -1,16 +1,4 @@
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/offcanvas/">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 
 <body>
   <div class="container" style="margin-top: 40px; opacity: 0.95;">
@@ -25,21 +13,19 @@
                 <div class="form-group">
                   <label for="description" class="col-md-2 col-sm-3 col-xs-12 control-label">Description</label>
                   <div class="col-md-10 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" pattern="^[A-Za-z? ?A-Za-z]{3,255}$"
+                    <input type="text" class="form-control" maxlength="255"
                       [(ngModel)]="contract.description" placeholder="Description" id="description" name="description"
                       #description="ngModel" required autocomplete="off">
                     <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
                       <div [hidden]="!description.errors.required">Description is required!</div>
-                      <div [hidden]="!description.errors.pattern">Description can only contain letters of the alphabet
-                        (from 3 to 255 characters).</div>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="price" class="col-md-2 col-sm-3 col-xs-12 control-label">Price</label>
                   <div class="col-md-10 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" pattern="^[1-9][0-9][0-9][0-9]$"
-                      [(ngModel)]="contract.price" placeholder="Price" id="price" name="description"
+                    <input type="text" class="form-control" pattern="^[1-9][0-9][0-9]$"
+                      [(ngModel)]="contract.price" placeholder="Price" id="price" name="price"
                       #price="ngModel" required autocomplete="off">
                     <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
                       <div [hidden]="!price.errors.required">Price is required!</div>
@@ -51,27 +37,26 @@
               <fieldset class="fieldset">
                 <fieldset class="experience-border">
                   <legend class="experience-border">Skill Info</legend>
-                  <div *ngFor="let skill of contract.neededSkills; let index = index;">
+                  <div *ngFor="let skill of contract.neededSkill; let index = index;">
                     <label for="description" class="col-md-2 col-sm-3 col-xs-12 control-label">Skill:{{index+1}}</label>
                     <div class="form-group">
                       <label for="name" class="col-md-2 col-sm-3 col-xs-12 control-label">Title</label>
                       <div class="col-md-10 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" pattern="^[A-Za-z]{3,30}$" [(ngModel)]="skill.name"
+                        <input type="text" class="form-control" pattern="^[A-Za-z]{3,30}$" [(ngModel)]="skill.skillName"
                           [ngModelOptions]="{standalone: true}" placeholder="Title" id="name" name="name"
-                          #name="ngModel" required autocomplete="off">
+                          #name="ngModel"  autocomplete="off">
                         <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-                          <div [hidden]="!name.errors.required">Title is required!</div>
                           <div [hidden]="!name.errors.pattern">Title can only contain letters of the alphabet (from
                             3 to 30 characters).</div>
                         </div>
                       </div>
                     </div>
 
-                    <div *ngIf="contract.id == null">
+                    <div *ngIf="contract.contractId == null">
                       <p style="margin-top: 10px;"><a class="btn btn-danger" style="left: 0;" role="button"
                           (click)="removeInputFieldSkill(index)">Delete Skill</a></p>
                     </div>
-                    <div *ngIf="contract.id != null">
+                    <div *ngIf="contract.contractId != null">
                       <p style="margin-top: 10px;"><a class="btn btn-danger" style="left: 0;" role="button"
                           (click)="deleteSkill(skill)">Delete Skill</a></p>
                     </div>
@@ -83,14 +68,14 @@
               <fieldset class="fieldset">
                 <h3 class="fieldset-title">Action</h3>
                 <div class="form-group">
-                  <div *ngIf="contract.id == null">
+                  <div *ngIf="contract.contractId == null">
                     <button [disabled]="!cvForm.form.valid" class="btn btn-primary" (click)="insert()">Create</button>
                   </div>
-                  <div *ngIf="contract.id != null">
+                  <div *ngIf="contract.contractId != null">
                     <button [disabled]="!cvForm.form.valid" class="btn btn-success" (click)="update()">Update</button>
                   </div>
                   <hr>
-                  <a class="cancel" routerLink="/contract/all"
+                  <a class="cancel" routerLink="/contract/view"
                     style="font-size: 17px;margin-left: 10px;margin-top:30px">Cancel</a>
                 </div>
               </fieldset>
@@ -102,4 +87,3 @@
   </div>
 </body>
 
-</html>

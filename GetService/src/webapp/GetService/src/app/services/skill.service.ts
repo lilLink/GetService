@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Skill } from '../models/skill';
+import { Skill } from '../models/skill.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -35,7 +35,7 @@ export class SkillService {
   }
 
   public deleteById(skill: Skill) {
-    return this.http.delete(this.skillURL + skill.id, httpOptions);
+    return this.http.delete(this.skillURL + skill.skillId, httpOptions);
   }
 
   public create(skill: Skill) {

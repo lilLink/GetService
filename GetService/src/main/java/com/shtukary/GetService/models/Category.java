@@ -25,15 +25,11 @@ public class Category implements Serializable {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Skill> skill;
-
     public Category() {
     }
 
     public Category(String categoryName, List<Skill> skills) {
         this.categoryName = categoryName;
-        this.skill = skills;
     }
 
     public Long getCategoryId() {
@@ -52,13 +48,7 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public List<Skill> getSkills() {
-        return skill;
-    }
 
-    public void setSkills(List<Skill> skills) {
-        this.skill = skills;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -66,21 +56,19 @@ public class Category implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
         return Objects.equals(categoryId, category.categoryId) &&
-                Objects.equals(categoryName, category.categoryName) &&
-                Objects.equals(skill, category.skill);
+                Objects.equals(categoryName, category.categoryName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(categoryId, categoryName, skill);
+        return Objects.hash(categoryId, categoryName);
     }
 
     @Override
     public String toString() {
         return "Category{" +
                 "categoryId=" + categoryId +
-                ", categoryName='" + categoryName + '\'' +
-                ", skills=" + skill +
+                ", categoryName='" + categoryName +
                 '}';
     }
 }

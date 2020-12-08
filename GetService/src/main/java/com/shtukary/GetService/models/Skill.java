@@ -17,24 +17,19 @@ public class Skill implements Serializable {
     @Column(name = "skill_name")
     private String skillName;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "contract_id", nullable = false)
     private Contract contract;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "contractor_id", nullable = false)
-    private Contractor contractor;
 
     public Skill() {
     }
 
-    public Skill(String skillName, Category category) {
+    public Skill(Long skillId, String skillName, Contract contract) {
+        this.skillId = skillId;
         this.skillName = skillName;
-        this.category = category;
+        this.contract = contract;
     }
 
     public Long getSkillId() {
@@ -53,13 +48,7 @@ public class Skill implements Serializable {
         this.skillName = skillName;
     }
 
-    public Category getCategory() {
-        return category;
-    }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,21 +56,19 @@ public class Skill implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Skill skill = (Skill) o;
         return Objects.equals(skillId, skill.skillId) &&
-                Objects.equals(skillName, skill.skillName) &&
-                Objects.equals(category, skill.category);
+                Objects.equals(skillName, skill.skillName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(skillId, skillName, category);
+        return Objects.hash(skillId, skillName);
     }
 
     @Override
     public String toString() {
         return "Skill{" +
                 "skillId=" + skillId +
-                ", skillName='" + skillName + '\'' +
-                ", category=" + category +
+                ", skillName='" + skillName +
                 '}';
     }
 }

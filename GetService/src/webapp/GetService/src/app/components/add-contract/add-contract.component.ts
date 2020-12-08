@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Contract } from 'src/app/models/contract';
-import { Skill } from 'src/app/models/skill';
+
+import { Contract } from 'src/app/models/contract.model';
+import { Skill } from 'src/app/models/skill.model';
 import { ContractService } from 'src/app/services/contract.service';
 import { SkillService } from 'src/app/services/skill.service';
 
@@ -22,7 +23,7 @@ export class AddContractComponent implements OnInit {
               private skillService: SkillService) { }
 
   ngOnInit(): void {
-    var cvId = this.route.snapshot.paramMap.get("id");
+    var cvId = this.route.snapshot.paramMap.get("contractId");
     if (cvId !== null) {
       this.contractService.findById(cvId)
         .subscribe(data => {
@@ -35,7 +36,7 @@ export class AddContractComponent implements OnInit {
     this.contractService.update(this.contract)
       .subscribe(data => {
         if (data != null) {
-          this.router.navigate(['/contract']);
+          this.router.navigate(['/contract/view']);
         } else {
           alert("Validation problem has been occured");
         }
@@ -46,7 +47,7 @@ export class AddContractComponent implements OnInit {
     this.contractService.create(this.contract)
       .subscribe(data => {
         if (data != null) {
-          this.router.navigate(['/contract']);
+          this.router.navigate(['/contract/view']);
         } else {
           alert("Validation problem has been occured");
         }
@@ -62,11 +63,13 @@ export class AddContractComponent implements OnInit {
   }
 
   newSkill() {
-    this.contract.neededSkills.push(new Skill());
+    console.log("this.contract.neededSkills");
+    console.log(this.contract.neededSkill);
+    this.contract.neededSkill.push(new Skill());
   }
 
   removeInputFieldSkill(index: number): void {
-    this.contract.neededSkills.splice(index, 1);
+    this.contract.neededSkill.splice(index, 1);
   }
 
 }

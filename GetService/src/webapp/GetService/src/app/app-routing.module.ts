@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: 'header', component: HeaderComponent},
   {path: 'headerlog', component: HeaderlogComponent},
   {path: 'contract/add', component: AddContractComponent},
-  {path: 'contract/view', component: ViewContractComponent}
+  {path: 'contract/view', component: ViewContractComponent},
+  {path: 'contract/update/:contractId' ,component: AddContractComponent}
 ];
 
 @NgModule({

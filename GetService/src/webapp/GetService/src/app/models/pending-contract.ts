@@ -1,4 +1,4 @@
-import { Contract } from './contract';
+import { Contract } from './contract.model';
 import { Employer } from './employer';
 
 export class PendingContract{

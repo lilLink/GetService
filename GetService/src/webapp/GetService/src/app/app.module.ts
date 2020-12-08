@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AddContractComponent } from './components/add-contract/add-contract.component';
@@ -11,6 +12,7 @@ import { AuthorizationComponent } from './components/authorization/authorization
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HeaderlogComponent } from './components/headerlog/headerlog.component';
 import { ContractsComponent } from './components/contracts/contracts.component';
+import { AppConfig, APP_CONFIG } from './app.config';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,12 @@ import { ContractsComponent } from './components/contracts/contracts.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_CONFIG, useValue: AppConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

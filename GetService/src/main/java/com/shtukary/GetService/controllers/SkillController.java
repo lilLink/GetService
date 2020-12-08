@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("skill")
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SkillController {
 
     @Autowired
