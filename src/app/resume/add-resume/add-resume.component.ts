@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Resume } from '../../models/resume.model';
@@ -83,4 +83,4 @@ export class AddResumeComponent {
     this.resume.jobs.splice(index, 1);
   }
 
-}
+}*/

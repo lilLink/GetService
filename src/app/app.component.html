@@ -1,38 +1,37 @@
 <router-outlet></router-outlet>
 
-<nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-inverse" style="height:70px">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+<nav class="navbar navbar-toggleable-md fixed-top  bg-dark" style="height:70px">
+  <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
     data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
     aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" routerLink="/vacancies" style="color: white; font-size: 30px;">RabotyNet</a>
+  </button>-->
+<div class="col-10">
+ 
 
   <div class="collapse navbar-collapse" style="margin-left: 100px;">
-    <ul class="navbar-nav mr-auto">
-      <a class="navbar-brand" routerLink="/companies/my" *ngIf="isCowner">My companies</a>
-      <a class="navbar-brand" routerLink="/createCompany" *ngIf="isUser || isCowner">Create company</a>
-      <a class="navbar-brand" routerLink="/resume/user" *ngIf="isCowner || isUser">My resume </a>
-      <a class="navbar-brand" routerLink="/companies" *ngIf="isAdmin">Сompanies</a>
-      <a class="navbar-brand" routerLink="/hotVacancies">Hot Vacancies</a>
-      <a class="navbar-brand" routerLink="/closedVacancies" *ngIf="isCowner">Closed Vacancies</a>
+    <ul class="navbar-nav">
+      
+      <a class="nav-link text-light" routerLink="/companies/my" *ngIf="isCowner">My companies</a>
+      <a class="nav-link text-light" routerLink="/createCompany" *ngIf="isUser || isCowner">Create company</a>
+      <a class="nav-link text-light" routerLink="/companies" *ngIf="isAdmin">Сompanies</a>
+      <a class="nav-link text-light" routerLink="/hotVacancies">Hot Vacancies</a>
+      <a class="nav-link text-light" routerLink="/closedVacancies" *ngIf="isCowner">Closed Vacancies</a>
     </ul>
+  </div>
+</div>
+  <div class="col-2">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" style="margin-top: 5px; margin-right: 60px;">
+     <!-- <li class="nav-item" style="margin-top: 5px; margin-right: 60px;">
         <button class="btn btn-outline-success my-2 my-sm-0" [disabled]="searchShown" (click)="showSearchForm()"
           style="width: 200px;">
           Search
         </button>
-      </li>
+      </li>-->
       <li class="nav-item">
         <div class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown">
-            <img *ngIf="(isUser || isCowner) && avatar" class="rounded-circle img-responsive z-depth-0"
-              style="width: 50px; height: 50px" [src]="avatar" alt="">
-            <img *ngIf="isAdmin" class="rounded-circle img-responsive z-depth-0" style="width: 50px; height: 50px"
-              src="/assets/img/admin.jpg" alt="">
-            <img *ngIf="!currentUser || (!isAdmin && !avatar)" class="rounded-circle img-responsive z-depth-0"
-              style="width: 50px; height: 50px" src="/assets/img/user.jpg" alt="">
+          <a class="dropdown-toggle text-light nav-link" data-toggle="dropdown">
+            Profile
           </a>
           <div class="list dropdown-menu">
             <a class="dropdown-item" routerLink="/profile" *ngIf="isUser || isCowner">Profile</a>
@@ -44,7 +43,10 @@
     </ul>
   </div>
 </nav>
-
+<div class="bg-secondary" id="footer">
+  <span class="text-light">© Copyright</span>
+</div>
+<!--
 <div id="overlay" [hidden]="searchForm">
   <button id="hideButton" (click)="hide()" style="color: white" class="btn"><i class="fa fa-close"></i></button>
   <form class="search-form">
@@ -80,4 +82,4 @@
       class="form-control"><br>
     <button id="startButton" class="btn btn-info" (click)="startSearch()">Start search</button>
   </form>
-</div>
+</div> -->

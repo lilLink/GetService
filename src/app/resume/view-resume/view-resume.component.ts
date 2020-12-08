@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Resume } from '../../models/resume.model';
@@ -23,4 +23,4 @@ export class ViewResumeComponent implements OnInit {
       });
   };
 
-}
+}*/

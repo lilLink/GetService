@@ -36,19 +36,19 @@ export class AppComponent {
       this.personService.findById(this.currentUser.userId)
         .subscribe(data => {
           if (data.photo != null) {
-            this.loadPhoto(data.photo.photoId);
+            //this.loadPhoto(data.photo.photoId);
           }
         });
     }
   }
-
+  /*
   loadPhoto(photoId: BigInteger) {
     this.photoService.loadAvatar(photoId)
       .subscribe(data => {
         this.avatar = this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64," + data);
       });
   }
-
+  */
   logout() {
     this.app.logout();
     this.vacancySelect = false;
@@ -66,12 +66,12 @@ export class AppComponent {
   get isUser() {
     return this.currentUser && this.currentUser.roles && this.currentUser.roles.indexOf(Role.ROLE_USER) > -1;
   }
-
+ /*
   hide() {
     this.searchForm = true;
     this.searchShown = false;
   }
-
+ 
   showSearchForm() {
     this.searchForm = false;
     this.searchShown = true;
@@ -94,7 +94,7 @@ export class AppComponent {
     }
   }
 
-  startSearch() {
+   startSearch() {
     switch (this.search.searchDocument) {
       case 'resume':
         this.router.navigate(['/searchResume', {
@@ -113,6 +113,6 @@ export class AppComponent {
     }
 
     this.hide();
-  }
+  }*/
 
 }

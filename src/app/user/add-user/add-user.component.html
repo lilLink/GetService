@@ -46,15 +46,15 @@
             <div class="form-row">
               <label class="form-row-inner">
                 <input type="password" id="password1" class="input-text" name="password1" #password1="ngModel" required
-                  autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+                  autocomplete="off" pattern="(?=.*[a-z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{8,}"
                   [(ngModel)]="user.password">
-                <span class="label">Password</span>
+                <label class="label">Password</label>
                 <span class="border"></span>
               </label>
               <div *ngIf="password1.errors && password1.dirty" class="alert alert-danger">
                 <div [hidden]="!password1.errors.required">Password is required!</div>
                 <div [hidden]="!password1.errors.pattern && login1.errors.pattern">Password must be no
-                  less than 9 symbols (uppercase, lowercase, number and one special symbol)!
+                  less than 9 symbols (lowercase, number)!
                 </div>
               </div>
             </div>
@@ -75,6 +75,7 @@
             </div>
             <div class="form-row-last">
               <input type="submit" name="register" class="register" [disabled]="userForm.form.valid" value="Register">
+              <input type="reset" name="reset" placeholder="Reset" value="Reset">
             </div>
           </div>
         </form>

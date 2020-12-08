@@ -43,7 +43,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="position" class="col-md-2 col-sm-3 col-xs-12 control-label">Posistion</label>
+                    <label for="position" class="col-md-2 col-sm-3 col-xs-12 control-label">Position</label>
                     <div class="col-md-10 col-sm-9 col-xs-12">
                       <input type="text" class="form-control" pattern="^[A-Za-z0-9\s\S]{3,40}$"
                         [(ngModel)]="vacancy.position" placeholder="Input position" id="position" name="position"
@@ -58,7 +58,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="employment" class="col-md-2 col-sm-3 col-xs-12 control-label">Employment</label>
+                    <label for="employment" class="col-md-2 col-sm-3 col-xs-12 control-label">jb</label>
                     <div class="col-md-10 col-sm-9 col-xs-12">
                       <select [(ngModel)]="vacancy.employment" name="employment" class="form-control">
                         <option value="FULL" [defaultSelected]="vacancy.employment">full</option>
@@ -71,12 +71,12 @@
 
                   <div class="form-group">
                     <div class="forSalary">
-                      <label for="salary" class="col-md-2 col-sm-3 col-xs-12 control-label">Salary</label>
+                      <label for="salary" class="col-md-2 col-sm-3 col-xs-12 control-label">Encouragement</label>
                       <div class="col-md-6 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" pattern="^[0-9]{3,11}$" [(ngModel)]="vacancy.salary"
                           placeholder="Input salary" id="salary" name="salary" #salary="ngModel" autocomplete="off">
                         <div *ngIf="salary.errors && (salary.dirty || salary.touched)" class="alert alert-danger">
-                          <div [hidden]="!salary.errors.required">Salary is required!</div>
+                          <div [hidden]="!salary.errors.required">Encouragement is required!</div>
                           <div [hidden]="!salary.errors.pattern">
                             Salary can only contain numbers (3-11 digits)!
                           </div>
@@ -112,7 +112,7 @@
               <fieldset class="fieldset">
                 <fieldset class="experience-border">
                   <legend class="experience-border">
-                    <h5>Requirements Info</h5>
+                    <h5>Skills Info</h5>
                   </legend>
                   <div class="form-group">
                     <div class="col-md-10 col-sm-9 col-xs-12"
@@ -121,7 +121,7 @@
                         class="col-md-2 col-sm-3 col-xs-12 control-label">Requirement:{{index+1}}</label>
                       <div *ngIf="vacancy.vacancyId == null; else updateBlock">
                         <input type="text" class="form-control" name="description" pattern="^[a-zA-Z0-9_,.\- &]{3,100}$"
-                          [ngModelOptions]="{standalone: true}" placeholder="Input requirement" maxlength="100"
+                          [ngModelOptions]="{standalone: true}" placeholder="Input skill" maxlength="100"
                           id="description" [(ngModel)]="item.description" #description="ngModel" required
                           autocomplete="off">
                         <div *ngIf="description.errors && (description.dirty || description.touched)"
@@ -159,7 +159,7 @@
                       <div class="addRequirement">
                         <div>
                           <button class="btn btn-success" type="button" style="margin-left: 14px;"
-                            [disabled]="!personForm.form.valid" (click)="addFieldValue()">Add new requirement</button>
+                            [disabled]="!personForm.form.valid" (click)="addFieldValue()">Add new skill</button>
                         </div>
                       </div>
                     </td>

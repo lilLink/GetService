@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 
@@ -135,7 +136,7 @@
                       [(ngModel)]="resume.education.specialty" placeholder="Specialty" id="specialty" name="specialty"
                       #specialty="ngModel" autocomplete="off">
                     <div *ngIf="specialty.errors && (specialty.dirty || specialty.touched)" class="alert alert-danger">
-                      <!-- <div [hidden]="!specialty.errors.required">Specialty is required!</div> -->
+                      <div [hidden]="!specialty.errors.required">Specialty is required!</div> 
                       <div [hidden]="!specialty.errors.pattern">
                         Specialty can only contain letters and numbers (3-100 characters)!
                       </div>
@@ -147,7 +148,7 @@
                       name="graduation" #graduation="ngModel" autocomplete="off">
                     <div *ngIf="graduation.errors && (graduation.dirty || graduation.touched)"
                       class="alert alert-danger">
-                      <!-- <div [hidden]="!graduation.errors.required">Graduatioin is required!</div> -->
+                       <div [hidden]="!graduation.errors.required">Graduatioin is required!</div> 
                       <div [hidden]="!graduation.errors.pattern">
                         Graduatioin can only contain letters and numbers (3-30 characters)!
                       </div>
@@ -235,19 +236,19 @@
               <br>
               <fieldset class="fieldset">
                 <h3 class="fieldset-title">Action</h3>
-                <!-- <div class="form-group">
+                 <div class="form-group">
                   <label for="send" class="col-md-5" style="float: left; ">Send email with CV</label>
                   <label for="empty" class="col-md-5" style="float: left; "></label>
                   <div class="col-md-10" style="float: left; ">
                     <input type="checkbox" [checked]="send" (change)="send = !send" />
                   </div>
-                </div> -->
-                <!-- <div class="form-group">
+                </div> 
+                 <div class="form-group">
                   <div *ngIf="resume.resumeId != null">
                     <button [disabled]="!cvForm.form.valid" class="btn btn-success" (click)="showPdf() ">Create PDF
                     </button>
                   </div>
-                </div> -->
+                </div> 
                 <div class="form-group">
                   <div *ngIf="resume.resumeId != null">
                     <button [disabled]="!cvForm.form.valid" class="btn btn-success" (click)="showPreviewPdf() ">Preview
@@ -264,4 +265,4 @@
   </div>
 </body>
 
-</html>
+</html>-->

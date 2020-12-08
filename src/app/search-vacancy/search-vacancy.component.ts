@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Search } from '../models/search/search.model';
@@ -233,4 +233,4 @@ export class SearchVacancyComponent implements OnInit {
     this.sHidden = true;
   }
 
-}
+}*/

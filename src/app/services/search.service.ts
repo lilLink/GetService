@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+/*import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { SearchResumeResponse } from '../models/search/SearchResumeResponse.model';
@@ -31,4 +31,4 @@ export class SearchService {
     return this.http.post<SearchVacancyResponse>(this.searchUrl + '/searchVacancy', searchVacancy, httpOptions);
   }
 
-}
+}*/
