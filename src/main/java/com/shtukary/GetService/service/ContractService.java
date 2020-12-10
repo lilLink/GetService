@@ -12,8 +12,12 @@ import java.util.List;
 @Transactional
 public class ContractService implements AbstractService<Contract> {
 
+    private final ContractRepository contractRepository;
+
     @Autowired
-    private ContractRepository contractRepository;
+    public ContractService(ContractRepository contractRepository){
+        this.contractRepository = contractRepository;
+    }
 
     @Override
     public Contract findById(Long id) {

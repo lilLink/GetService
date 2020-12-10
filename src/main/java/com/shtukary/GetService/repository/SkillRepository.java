@@ -1,9 +1,9 @@
 package com.shtukary.GetService.repository;
 
-import com.shtukary.GetService.models.Employer;
+import com.shtukary.GetService.models.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployerRepository extends JpaRepository<Employer, Long> {
+public interface SkillRepository extends JpaRepository<Skill, Long> {
 }
