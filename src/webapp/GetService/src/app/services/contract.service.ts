@@ -32,7 +32,7 @@ const httpOptions = {
   
     public update(contract: Contract): Observable<Contract> {
       console.log(contract);
-      return this.http.put<Contract>(this.contractURL + "add/" + contract.contractId, contract, httpOptions);
+      return this.http.put<Contract>(this.contractURL + 'update', contract, httpOptions);
     }
   
     public deleteById(contract: Contract) {

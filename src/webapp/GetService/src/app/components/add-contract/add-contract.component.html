@@ -48,6 +48,16 @@
                               3 to 30 characters).</div>
                           </div>
                         </div>
+                        <label for="disc" class="col-md-2 col-sm-3 col-xs-12 control-label">Desc</label>
+                        <div class="col-md-10 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" pattern="^[A-Za-z]{3,30}$" [(ngModel)]="skill.skillDescription"
+                            [ngModelOptions]="{standalone: true}" placeholder="Skill" id="disc" name="disc"
+                            #disc="ngModel"  autocomplete="off">
+                          <div *ngIf="disc.errors && (disc.dirty || disc.touched)" class="alert alert-danger">
+                            <div [hidden]="!disc.errors.pattern">Title can only contain letters of the alphabet (from
+                              3 to 30 characters).</div>
+                          </div>
+                        </div>
                       </div>
   
                       <div *ngIf="contract.contractId == null">

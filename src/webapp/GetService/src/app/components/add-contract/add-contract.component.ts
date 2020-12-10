@@ -47,6 +47,7 @@ export class AddContractComponent implements OnInit {
   };
 
   insert(): void {
+    console.log(this.contract);
     this.contractService.create(this.contract)
       .subscribe(data => {
         if (data != null) {

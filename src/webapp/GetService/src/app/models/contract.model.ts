@@ -7,5 +7,5 @@ export class Contract{
     price: BigInteger;
     description: string;
     neededSkills: Skill[] = [];
-    userInfo: UserInfo;
+    //userInfo: UserInfo = new UserInfo();
 }

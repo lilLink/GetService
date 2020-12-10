@@ -25,6 +25,7 @@ export class ViewContractsComponent implements OnInit {
   };
 
   deleteById(con: Contract): void {
+    console.log(con.contractId);
     this.contractService.deleteById(con)
       .subscribe(() => {
         this.contracts = this.contracts.filter(p => p !== con);
