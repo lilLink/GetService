@@ -1,11 +1,15 @@
 package com.shtukary.GetService.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "contract")
 public class Contract {
 

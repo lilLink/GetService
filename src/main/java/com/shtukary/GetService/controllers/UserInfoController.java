@@ -18,6 +18,7 @@ public class UserInfoController {
     public List<UserInfo> getAll(){
         return userInfoService.findAll();
     }
+
     @GetMapping("{id}")
     public UserInfo getOne(@PathVariable("id") UserInfo userInfo){
         return userInfoService.findById(userInfo.getInfoId());
