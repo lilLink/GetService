@@ -12,8 +12,12 @@ import java.util.List;
 @Transactional
 public class UserInfoService implements AbstractService<UserInfo> {
 
+    private final UserInfoRepository userInfoRepository;
+
     @Autowired
-    private UserInfoRepository userInfoRepository;
+    public UserInfoService(UserInfoRepository userInfoRepository) {
+        this.userInfoRepository = userInfoRepository;
+    }
 
     @Override
     public UserInfo findById(Long id) {

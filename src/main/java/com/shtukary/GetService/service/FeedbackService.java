@@ -12,8 +12,12 @@ import java.util.List;
 @Transactional
 public class FeedbackService implements AbstractService<Feedback> {
 
+    private final FeedbackRepository feedbackRepository;
+
     @Autowired
-    private FeedbackRepository feedbackRepository;
+    public FeedbackService(FeedbackRepository feedbackRepository) {
+        this.feedbackRepository = feedbackRepository;
+    }
 
     @Override
     public Feedback findById(Long id) {

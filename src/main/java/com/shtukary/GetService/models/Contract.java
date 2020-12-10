@@ -5,21 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "contract")
-public class Contract {
+@Entity
+@Table(name = "contract")
+public class Contract implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contract_id")
     private Long contractId;
-
-    @OneToMany(mappedBy = "contract", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Employer> employers;
 
     @Column(name = "price")
     private Long price;
@@ -27,9 +26,8 @@ public class Contract {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "skill")
-    private List<String> neededSkills;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "info_id", nullable = false)
+    private UserInfo userInfo;
 
-    @OneToMany(mappedBy = "contract", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Feedback> feedbacks;
 }
