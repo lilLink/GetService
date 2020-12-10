@@ -18,6 +18,7 @@ public class ContractController {
     public List<Contract> getAll(){
         return contractService.findAll();
     }
+
     @GetMapping("{id}")
     public Contract getOne(@PathVariable("id") Contract contract){
         return contractService.findById(contract.getContractId());

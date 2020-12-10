@@ -18,6 +18,7 @@ public class FeedbackController {
     public List<Feedback> getAll(){
         return feedbackService.findAll();
     }
+
     @GetMapping("{id}")
     public Feedback getOne(@PathVariable("id") Feedback feedback){
         return feedbackService.findById(feedback.getFeedbackId());

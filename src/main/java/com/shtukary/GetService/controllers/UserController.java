@@ -18,6 +18,7 @@ public class UserController {
     public List<User> getAll(){
         return userService.findAll();
     }
+
     @GetMapping("{id}")
     public User getOne(@PathVariable("id") User user){
         return userService.findById(user.getUserId());

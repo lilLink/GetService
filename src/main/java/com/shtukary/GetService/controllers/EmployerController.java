@@ -18,6 +18,7 @@ public class EmployerController {
     public List<Employer> getAll(){
         return employerService.findAll();
     }
+
     @GetMapping("{id}")
     public Employer getOne(@PathVariable("id") Employer contract){
         return employerService.findById(contract.getEmployerId());
