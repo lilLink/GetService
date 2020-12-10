@@ -26,6 +26,9 @@ public class Contract implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @OneToMany(mappedBy = "contract", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Skill> neededSkills;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "info_id", nullable = false)
     private UserInfo userInfo;
