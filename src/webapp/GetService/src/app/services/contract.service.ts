@@ -10,8 +10,7 @@ const httpOptions = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4200/',
       'Access-Control-Allow-Methods': 'POST, GET, PUT, OPTIONS, DELETE',
-      'Access-Control-Max-Age': '3600',
-      'Access-Control-Allow-Headers': 'X-requested-with, Content-Type'
+      'Access-Control-Max-Age': '3600'
     })
   };
 
@@ -20,5 +19,29 @@ const httpOptions = {
   })
   export class ContractService{
     constructor(private http: HttpClient) { }
+
+    private contractURL = 'http://localhost:8080/contract/';
+
+    public findAll(){
+      return this.http.get<Contract[]>(this.contractURL + "all", httpOptions);
+    }
+  
+    public findById(contractId: any): Observable<Contract> {
+      return this.http.get<Contract>(this.contractURL + contractId, httpOptions);
+    }
+  
+    public update(contract: Contract): Observable<Contract> {
+      console.log(contract);
+      return this.http.put<Contract>(this.contractURL + "add/" + contract.contractId, contract, httpOptions);
+    }
+  
+    public deleteById(contract: Contract) {
+      console.log(contract);
+      return this.http.delete(this.contractURL + "delete/" + contract.contractId, httpOptions);
+    }
+  
+    public create(contract: Contract) {
+      return this.http.post<Contract>(this.contractURL + "add" , contract, httpOptions);
+    }
 
   }

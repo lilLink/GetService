@@ -1,11 +1,11 @@
 import {Feedback} from './feedback.model';
-import {Employer} from './employer.model';
+import { Skill } from './skill.model';
+import { UserInfo } from './userinfo.model';
 
 export class Contract{
     contractId: number;
-    employers: Employer[] = [];
-    price: number;
+    price: BigInteger;
     description: string;
-    neededSkills: string[] = [];
-    feedbacks: Feedback[] = [];
+    neededSkills: Skill[] = [];
+    userInfo: UserInfo;
 }

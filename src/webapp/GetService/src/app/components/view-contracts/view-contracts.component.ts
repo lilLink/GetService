@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Contract} from '../../models/contract.model';
+import { ContractService } from '../../services/contract.service';
 
 
 @Component({
@@ -10,22 +11,24 @@ import {Contract} from '../../models/contract.model';
 export class ViewContractsComponent implements OnInit {
 
   contracts: Contract[];
-  contruct: Contract;
-  
 
-  constructor() { }
+  constructor(private contractService: ContractService) { }
 
-  ngOnInit(): void {
-    this.contruct = new Contract();
-    this.contruct[1] = {
-      description: "dasdasd",
-      price: 12
-    };
+  ngOnInit() {
     
-    
-    this.contracts.push(this.contruct);
-    console.log(this.contracts);
+    this.contractService.findAll()
+      .subscribe(data => {
+        console.log(data);
+        this.contracts = data;
+      });
+      
+  };
 
+  deleteById(con: Contract): void {
+    this.contractService.deleteById(con)
+      .subscribe(() => {
+        this.contracts = this.contracts.filter(p => p !== con);
+      });
   }
 
 }

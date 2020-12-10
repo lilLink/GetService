@@ -10,26 +10,29 @@
               <th>Price</th>
               <th>Description</th>
               <th>Skill Name</th>
+              <th>Skill Description</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cv of contracts">
-              <td class="d-none">{{cv.contractId}}</td>
+            <tr *ngFor="let con of contracts">
+              <td class="d-none">{{con.contractId}}</td>
   
-              <td>{{cv.price}}</td>
-              <td>{{cv.description}}</td>
+              <td>{{con.price}}</td>
+              <td>{{con.description}}</td>
               <td>
-                <li *ngFor="let skill of cv.neededSkill">{{skill.name}}</li>
+                <li *ngFor="let skill of con.neededSkills">{{skill.skillName}}</li>
               </td>
               <td>
-                <a routerLink="/contract/update/{{cv.contractId}}" class="btn btn-success">Update</a>
+                <li *ngFor="let skill of con.neededSkills">{{skill.skillDescription}}</li>
+              </td>
+              
+              <td>
+                <a routerLink="" class="btn btn-success">Update</a>
               </td>
               <td>
                 <button class="btn btn-danger" (click)="deleteById(cv)">Delete</button>
               </td>
-              <td>
-                <button class="btn btn-primary">View comments</button>
-              </td>
+              
             </tr>
           </tbody>
         </table>

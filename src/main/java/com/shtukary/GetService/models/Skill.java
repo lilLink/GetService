@@ -1,5 +1,6 @@
 package com.shtukary.GetService.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,7 +23,8 @@ public class Skill implements Serializable {
     private String skillDescription;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "contract_id", nullable = false)
+    @JoinColumn(name = "contract_id")
+    @JsonIgnore
     private Contract contract;
 
 }

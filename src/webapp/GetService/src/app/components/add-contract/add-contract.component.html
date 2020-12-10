@@ -40,7 +40,7 @@
                       <div class="form-group">
                         <label for="name" class="col-md-2 col-sm-3 col-xs-12 control-label">Title</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" pattern="^[A-Za-z]{3,30}$" [(ngModel)]="skill"
+                          <input type="text" class="form-control" pattern="^[A-Za-z]{3,30}$" [(ngModel)]="skill.skillName"
                             [ngModelOptions]="{standalone: true}" placeholder="Skill" id="name" name="name"
                             #name="ngModel"  autocomplete="off">
                           <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'autho', component: AuthoComponent},
   {path: 'regist', component: RegistComponent},
   {path: 'contract/add', component: AddContractComponent},
-  {path: 'contract/feedback', component: FeedbackComponent}
+  {path: 'feedback', component: FeedbackComponent}
 ];
 
 @NgModule({

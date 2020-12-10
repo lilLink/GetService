@@ -1,5 +1,6 @@
 package com.shtukary.GetService.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class Contract implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "info_id", nullable = false)
+    @JsonIgnore
     private UserInfo userInfo;
 
 }

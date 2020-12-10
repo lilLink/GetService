@@ -11,6 +11,7 @@ import { AuthoComponent } from './components/autho/autho.component';
 import { RegistComponent } from './components/regist/regist.component';
 import { AddContractComponent } from './components/add-contract/add-contract.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { AppConfig, APP_CONFIG } from './app.config';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     ReactiveFormsModule
     
   ],
-  providers: [],
+  providers: [
+    { provide: APP_CONFIG, useValue: AppConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
