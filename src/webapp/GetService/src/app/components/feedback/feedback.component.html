@@ -1,0 +1,30 @@
+<body>
+    <div class="container" style="margin-top: 40px; opacity: 0.95;">
+        <div class="col-md-9">
+            <h2>Comments</h2>
+      
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="d-none">Id</th>
+                  <th>Comment</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cv of comments">
+                  <td class="d-none">{{cv.feedbackId}}</td>
+      
+                  <td>{{cv.comment}}</td>
+                  
+                  <td>
+                    <button class="btn btn-primary">View comments</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      
+          </div>
+    </div>
+  </body>
+  
